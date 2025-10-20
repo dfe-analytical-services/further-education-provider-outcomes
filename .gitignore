@@ -1,0 +1,12 @@
+.Rproj.user
+.Rhistory
+.RData
+.RData*
+.Ruserdata
+README.html
+*_.new.png
+*unpublished*
+data/PRV01_data_rds.rds
+data/PRV02_data_rds.rds
+data/PRV03_data_rds.rds
+data/PRV04_data_rds.rds
