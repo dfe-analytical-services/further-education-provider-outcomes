@@ -1,8 +1,9 @@
 ## The intention of this is to re-arrange the data tables to be ready for viewing in the dashboard
-source("R/read_sql_data.R")
-message("Cleaning data")
+library(dplyr)
+
 ## PRV01 data
-PRV01_data <- PRV01_data %>%
+clean_prv01 <-  function(PRV01_data){
+PRV01_data %>%
   filter(
     country_name == "England",
     provider_type == "Total",
@@ -31,10 +32,11 @@ PRV01_data <- PRV01_data %>%
       as.numeric(no_dest_percent), no_dest_percent
     )
   )
-
+}
 
 ## PRV02 data
-PRV02_data <- PRV02_data %>%
+clean_prv02 <-  function(PRV02_data){
+PRV02_data %>%
   filter(
     country_name == "England",
     provider_type == "Total"
@@ -63,11 +65,12 @@ PRV02_data <- PRV02_data %>%
       as.numeric(no_dest_percent), no_dest_percent
     )
   )
-
+}
 
 
 ## PRV03 data
-PRV03_data <- PRV03_data %>%
+clean_prv03 <-  function(PRV03_data){
+PRV03_data %>%
   filter(country_name == "England") %>%
   select(-time_identifier, -geographic_level, -country_code, -country_name) %>%
   mutate(time_period = paste0(substring(time_period, 1, 4), "/", substring(time_period, 5, 6))) %>%
@@ -92,9 +95,10 @@ PRV03_data <- PRV03_data %>%
       as.numeric(no_dest_percent), no_dest_percent
     )
   )
-
+}
 ## PRV04 data
-PRV04_data <- PRV04_data %>%
+clean_prv04 <-  function(PRV04_data){
+PRV04_data %>%
   filter(
     country_name == "England",
     provider_type == "Total",
@@ -123,7 +127,7 @@ PRV04_data <- PRV04_data %>%
       as.numeric(no_dest_percent), no_dest_percent
     )
   )
-
+}
 
 
 ## Leave for a future date to look at National tables

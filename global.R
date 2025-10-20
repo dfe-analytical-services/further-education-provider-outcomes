@@ -48,11 +48,6 @@ if (FALSE) {
   shhh(library(testthat))
 }
 
-# Read in data
-PRV01_data <- readRDS("data/PRV01_data_rds.rds")
-PRV02_data <- readRDS("data/PRV02_data_rds.rds")
-PRV03_data <- readRDS("data/PRV03_data_rds.rds")
-PRV04_data <- readRDS("data/PRV04_data_rds.rds")
 
 # Source scripts --------------------------------------------------------------
 
@@ -60,11 +55,19 @@ PRV04_data <- readRDS("data/PRV04_data_rds.rds")
 # to the server file or to hold custom functions to keep the main files shorter
 #
 # It's best to do this here instead of the server file, to improve performance.
+lapply(list.files("R/*.R", pattern = "*.R", full.names = TRUE), source)
 
 # Source all files in the ui_panels folder
 lapply(list.files("R/ui_panels/", full.names = TRUE), source)
 
 # Set global variables --------------------------------------------------------
+
+# Read in data
+PRV01_data <- readRDS("data/PRV01_data_rds.rds") |> clean_prv01()
+PRV02_data <- readRDS("data/PRV02_data_rds.rds") |> clean_prv02()
+PRV03_data <- readRDS("data/PRV03_data_rds.rds") |> clean_prv03()
+PRV04_data <- readRDS("data/PRV04_data_rds.rds") |> clean_prv04()
+
 
 site_title <- "Department for Education (DfE) Further Education Outcomes Provider data" # name of app
 parent_pub_name <- "Further Education Outcomes" # name of source publication

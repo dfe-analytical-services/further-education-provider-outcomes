@@ -1,6 +1,8 @@
 library(gt)
 library(dplyr)
 
+
+test_suppression <- function(PRV04_data){
 # Sample data with mixed numeric and non-numeric values
 df <- tibble(
   Category = c("A", "B", "Total"), # Non-numeric column
@@ -55,3 +57,4 @@ gt_table <- x %>%
   )
 
 gt_table
+}
