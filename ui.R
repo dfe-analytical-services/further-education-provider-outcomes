@@ -23,7 +23,7 @@
 ui <- function(input, output, session) {
   fluidPage(
     # Set application metadata ------------------------------------------------
-    tags$head(HTML(paste0("<title>", site_title,"</title>"))),
+    tags$head(HTML(paste0("<title>", site_title, "</title>"))),
     tags$head(tags$link(rel = "shortcut icon", href = "dfefavicon.png")),
     use_shiny_title(),
     tags$html(lang = "en"),
